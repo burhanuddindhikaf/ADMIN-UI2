@@ -1,8 +1,8 @@
 import Card from "../components/Elements/Card";
 import MainLayout from "../components/Layouts/MainLayout";
-import CardBill from "../components/Fragments/Dashboard/CardBill";
-import CardExpenseBreakdown from "../components/Fragments/Dashboard/CardExpenseBreakdown";
-import CardTransaction from "../components/Fragments/Dashboard/CardTransaction";
+import CardBill from "../components/Fragments/dashboard/CardBill";
+import CardExpenseBreakdown from "../components/Fragments/dashboard/CardExpenseBreakdown";
+import CardTransaction from "../components/Fragments/dashboard/CardTransaction";
 
 const DashboardPage = () => {
   return (
