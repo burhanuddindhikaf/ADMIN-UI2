@@ -1,8 +1,10 @@
 import { goals } from "../../../data/goals";
 import Card from "../../Elements/Card";
+import CompositionExample from "../../Elements/GaugeChart";
 import { Icon } from "../../Elements/Icon";
 
 const CardGoal = () => {
+  const chartValue = (goals.presentAmount * 100) / goals.targetAmount;
   return (
     <Card
       title="Goals"
@@ -48,7 +50,7 @@ const CardGoal = () => {
               </div>
             </div>
             <div className="ms-4 text-center">
-              Chart
+              <CompositionExample desc={chartValue} />
               <div className="flex justify-between">
                 <span className="text-gray-03">$0</span>
                 <span className="font-bold text-2xl">12K</span>
