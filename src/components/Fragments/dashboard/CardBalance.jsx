@@ -4,7 +4,7 @@ import Stepper from "../../Elements/Stepper";
 import { Link } from "react-router-dom";
 import { Icon } from "../../Elements/Icon";
 import { useContext } from "react";
-import { ThemeContext } from "../../../context/ThemeContext";
+import { ThemeContext } from "../../../context/themeContext";
 
 const CardBalance = () => {
   const { theme } = useContext(ThemeContext);

@@ -5,7 +5,7 @@ import MobileStepper from "@mui/material/MobileStepper";
 import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import { ThemeContext } from "../../../context/ThemeContext";
+import { ThemeContext } from "../../../context/themeContext";
 
 const Stepper = (props) => {
   const { desc } = props;
