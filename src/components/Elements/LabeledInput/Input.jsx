@@ -1,10 +1,5 @@
-const Input = (props) => {
-  const {
-    type,
-    placeholder,
-    name,
-    variant = "bg-special-mainBg border border-gray-03",
-  } = props;
+const input = ({ name, type, placeholder, register }) => {
+  const variant = "bg-special-mainBg border border-gray-03";
 
   return (
     <input
@@ -13,8 +8,9 @@ const Input = (props) => {
       placeholder={placeholder}
       name={name}
       id={name}
+      {...register}
     />
   );
 };
 
-export default Input;
+export default input;
