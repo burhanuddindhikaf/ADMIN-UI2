@@ -3,15 +3,15 @@ import CheckBox from "../Elements/CheckBox";
 import LabeledInput from "../Elements/LabeledInput";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import CustomizedSnackbars from "../Elements/SnackBar";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
+import { NotifContext } from "../../context/notifContext";
 
 const FormSignIn = () => {
-  const [msg, setMsg] = useState("");
-  const [open, setOpen] = useState(true);
+  const { msg, setMsg, open, setOpen, setIsLoading } = useContext(NotifContext);
   const { setIsLoggedIn, setName } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -26,6 +26,7 @@ const FormSignIn = () => {
 
   const onErrors = (errors) => console.error(errors);
   const onFormSubmit = async (data) => {
+    setIsLoading(true);
     try {
       const response = await axios.post(
         "https://jwt-auth-eight-neon.vercel.app/login",
@@ -38,6 +39,7 @@ const FormSignIn = () => {
       const decode = jwtDecode(response.data.refreshToken);
       console.log(decode);
 
+      setIsLoading(false);
       setOpen(true);
       setMsg({ severity: "success", desc: "login success" });
 
@@ -48,6 +50,8 @@ const FormSignIn = () => {
 
       navigate("/");
     } catch (error) {
+      setIsLoading(false);
+
       if (error.response) {
         setOpen(true);
         setMsg({ severity: "error", desc: error.response.data.msg });
@@ -96,11 +100,10 @@ const FormSignIn = () => {
         <CheckBox label="Keep me signed in" name="status" />
       </div>
       <Button
-        variant={
-          !isValid
-            ? "bg-gray-05 w-full text-white"
-            : "bg-primary w-full text-white"
-        }
+        variant={`
+          ${!isValid ? "bg-gray-05 " : "bg-primary zoom-in"}
+            w-full text-white
+            `}
         type="submit"
         disabled={!isValid ? "disabled" : ""}
       >
