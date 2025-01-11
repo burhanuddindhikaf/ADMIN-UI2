@@ -13,6 +13,7 @@ html {
   :root {
     /* default primary color*/
     --color-primary: #299d91;
+    --color-background: #f8f9fa;
   }
 }
 
@@ -30,6 +31,14 @@ html {
 
 .theme-brown {
   --color-primary: #8b4513;
+}
+
+.darkmode {
+  --color-background: #1a202c;
+}
+
+.lightmode {
+  --color-background: #f8f9fa;
 }
 
 .zoom-in {

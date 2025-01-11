@@ -5,14 +5,27 @@ import { NotifContext } from "../../context/notifContext";
 import SimpleBackdrop from "../Elements/Baackdrop/indec";
 import CustomizedSnackbars from "../Elements/SnackBar";
 import * as motion from "motion/react-client";
+import { ModeContext } from "../../context/modeContext";
+import { Icon } from "../Elements/Icon";
 
 const AuthLayout = (props) => {
   const { children, type } = props;
   const { msg, setMsg, open, setOpen, isLoading, setIsLoadiing } =
     useContext(NotifContext);
+  const themes = [
+    { name: "darkmode", bgcolor: "bg-[#1a202c]", color: "#1a202c" },
+    { name: "lightmode", bgcolor: "bg-[#f8f9fa]", color: "#f8f9fa" },
+  ];
+  const { mode, setMode } = useContext(ModeContext);
+  const icons = {
+    darkmode: <Icon.darkmode />,
+    lightmode: <Icon.lightmode />,
+  };
 
   return (
-    <div className="flex justify-center min-h-screen items-center bg-special-mainBg">
+    <div
+      className={`flex justify-center min-h-screen items-center bg-background ${mode.name}`}
+    >
       {isLoading && (
         <SimpleBackdrop isLoading={isLoading} setIsLoadiing={setIsLoadiing} />
       )}
@@ -181,6 +194,17 @@ const AuthLayout = (props) => {
               </Link>
             </div>
           )}
+        </div>
+        <div className="md:flex md:gap-2 flex justify-center">
+          {themes.map((t) => (
+            <div
+              key={t.name}
+              className={`md:w-6 h-6 rounded-md cursor-pointer mb-2 zoom-in `}
+              onClick={() => setMode(t)}
+            >
+              {icons[t.name]}
+            </div>
+          ))}
         </div>
         {/* link end */}
       </motion.div>

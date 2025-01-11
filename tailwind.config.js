@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         primary: "var(--color-primary)",
+        background: "var(--color-background)",
         secondary: "#525256",
         defaultBlack: "#191919",
         gray: {
